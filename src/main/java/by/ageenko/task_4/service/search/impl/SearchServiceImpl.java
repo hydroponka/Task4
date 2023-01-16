@@ -1,10 +1,10 @@
-package by.ageenko.task_4.service.parser.impl;
+package by.ageenko.task_4.service.search.impl;
 
 import by.ageenko.task_4.entity.Bouquet;
 import by.ageenko.task_4.entity.Flower;
 import by.ageenko.task_4.exception.BouquetException;
 import by.ageenko.task_4.exception.FlowerException;
-import by.ageenko.task_4.service.parser.SearchService;
+import by.ageenko.task_4.service.search.SearchService;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

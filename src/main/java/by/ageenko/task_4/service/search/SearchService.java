@@ -1,4 +1,4 @@
-package by.ageenko.task_4.service.parser;
+package by.ageenko.task_4.service.search;
 
 import by.ageenko.task_4.entity.Bouquet;
 import by.ageenko.task_4.entity.Flower;
