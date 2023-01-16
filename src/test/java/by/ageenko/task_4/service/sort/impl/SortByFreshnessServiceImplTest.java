@@ -11,22 +11,19 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class SortByFreshnessServiceImplTest {
     static Logger logger = LogManager.getLogger();
 
     @Test
     void sortByFreshness() throws FlowerException, BouquetException {
         FlowerReaderImpl flowerReader = new FlowerReaderImpl();
-        Flower rose = flowerReader.RoseFlowerReader("data//Rose");
-        Flower gerbera = flowerReader.AsterFlowerReader("data//Gerbera");
-        Flower orchid = flowerReader.OrchidFlowerReader("data//Orchid");
-        List<Flower> flowerList = List.of(rose, orchid, gerbera);
+        Flower rose = flowerReader.pottedFlowerReader("data//Rose");
+        Flower gerbera = flowerReader.cutFlowerReader("data//Gerbera");
+        List<Flower> flowerList = List.of(rose,gerbera);
         Bouquet bouquet = new Bouquet(flowerList, PackageType.BASKET);
         logger.log(Level.INFO, "list = {}", bouquet.getFlowers());
         SortByFreshnessServiceImpl sortByFreshnessService = new SortByFreshnessServiceImpl();
-        sortByFreshnessService.SortByFreshness(bouquet);
+        sortByFreshnessService.sortByFreshness(bouquet);
         logger.log(Level.INFO, "listSort = {}", bouquet.getFlowers());
 
     }

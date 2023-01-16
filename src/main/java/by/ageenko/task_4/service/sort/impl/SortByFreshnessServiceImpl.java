@@ -2,7 +2,6 @@ package by.ageenko.task_4.service.sort.impl;
 
 import by.ageenko.task_4.entity.Bouquet;
 import by.ageenko.task_4.entity.Flower;
-import by.ageenko.task_4.entity.Freshness;
 import by.ageenko.task_4.exception.BouquetException;
 import by.ageenko.task_4.exception.FlowerException;
 import by.ageenko.task_4.service.sort.SortByFreshnessService;
@@ -17,7 +16,7 @@ public class SortByFreshnessServiceImpl implements SortByFreshnessService {
     static Logger logger = LogManager.getLogger();
 
     @Override
-    public void SortByFreshness(Bouquet bouquet) throws BouquetException, FlowerException {
+    public void sortByFreshness(Bouquet bouquet) throws BouquetException, FlowerException {
         List<Flower> flowerList = bouquet.getFlowers();
         if (bouquet == null) {
             throw new BouquetException("Bouquet is empty");

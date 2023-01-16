@@ -6,7 +6,7 @@ public class FlowerIdGenerator {
     private FlowerIdGenerator() {
     }
 
-    public static int generateIdOfArray() {
+    public static int generateIdOfFlower() {
         idOfFlower++;
         return idOfFlower;
     }

@@ -5,38 +5,27 @@ import by.ageenko.task_4.generator.FlowerIdGenerator;
 import java.util.StringJoiner;
 
 public abstract class Flower {
-    private String flowerName;
-    private String freshness;
-    private int flowerWeight;
-    private int flowerLength;
-    private int flowerPrice;
     private int flowerId;
+    private String flowerName;
+    private int flowerWeight;
+    private int flowerPrice;
 
 
-    public Flower(String flowerName, String freshness, int flowerWeight, int flowerLength, int flowerPrice) {
+    public Flower(String flowerName, int flowerWeight, int flowerPrice) {
+        this.flowerId = FlowerIdGenerator.generateIdOfFlower();
         this.flowerName = flowerName;
-        this.freshness = freshness;
         this.flowerWeight = flowerWeight;
-        this.flowerLength = flowerLength;
         this.flowerPrice = flowerPrice;
-        this.flowerId = FlowerIdGenerator.generateIdOfArray();
     }
 
     public String getFlowerName() {
         return flowerName;
     }
 
-    public String getFreshness() {
-        return freshness;
-    }
-
     public double getFlowerWeight() {
         return flowerWeight;
     }
 
-    public double getFlowerLength() {
-        return flowerLength;
-    }
     public int getFlowerId() {
         return flowerId;
     }
@@ -48,12 +37,10 @@ public abstract class Flower {
     @Override
     public String toString() {
         return new StringJoiner(", ", Flower.class.getSimpleName() + "[", "]")
-                .add("flowerName='" + flowerName + "'")
-                .add("freshness='" + freshness + "'")
-                .add("flowerWeight=" + flowerWeight)
-                .add("flowerLength=" + flowerLength)
-                .add("flowerPrice=" + flowerPrice)
                 .add("flowerId=" + flowerId)
+                .add("flowerName='" + flowerName + "'")
+                .add("flowerWeight=" + flowerWeight)
+                .add("flowerPrice=" + flowerPrice)
                 .toString();
     }
 }

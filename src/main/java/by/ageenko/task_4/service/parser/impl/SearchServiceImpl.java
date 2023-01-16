@@ -2,10 +2,9 @@ package by.ageenko.task_4.service.parser.impl;
 
 import by.ageenko.task_4.entity.Bouquet;
 import by.ageenko.task_4.entity.Flower;
-import by.ageenko.task_4.entity.Freshness;
 import by.ageenko.task_4.exception.BouquetException;
 import by.ageenko.task_4.exception.FlowerException;
-import by.ageenko.task_4.service.parser.ParserService;
+import by.ageenko.task_4.service.parser.SearchService;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,11 +12,11 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParserServiceImpl implements ParserService {
+public class SearchServiceImpl implements SearchService {
     static Logger logger = LogManager.getLogger();
 
     @Override
-    public List<Flower> ParserByFlowerLength(Bouquet bouquet, int leftEnd, int rightEnd) throws BouquetException, FlowerException {
+    public List<Flower> parserByFlowerLength(Bouquet bouquet, int leftEnd, int rightEnd) throws BouquetException, FlowerException {
         List<Flower> flowerList = new ArrayList<>();
         if (bouquet == null) {
             throw new BouquetException("Bouquet is empty");
@@ -38,7 +37,7 @@ public class ParserServiceImpl implements ParserService {
     }
 
     @Override
-    public List<Flower> ParserByFlowerPrice(Bouquet bouquet, int leftEnd, int rightEnd) throws BouquetException, FlowerException {
+    public List<Flower> parserByFlowerPrice(Bouquet bouquet, int leftEnd, int rightEnd) throws BouquetException, FlowerException {
         List<Flower> flowerList = new ArrayList<>();
         if (bouquet == null) {
             throw new BouquetException("Bouquet is empty");

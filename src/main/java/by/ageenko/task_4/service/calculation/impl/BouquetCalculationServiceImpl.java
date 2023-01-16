@@ -14,7 +14,7 @@ public class BouquetCalculationServiceImpl implements BouquetCalculationService 
     static Logger logger = LogManager.getLogger();
 
     @Override
-    public OptionalInt BouquetPrice(Bouquet bouquet) throws BouquetException, FlowerException {
+    public OptionalInt bouquetPrice(Bouquet bouquet) throws BouquetException, FlowerException {
         int bouquetPrice = 0;
         if (bouquet == null) {
             throw new BouquetException("Bouquet is empty");
@@ -33,7 +33,7 @@ public class BouquetCalculationServiceImpl implements BouquetCalculationService 
     }
 
     @Override
-    public OptionalInt BouquetLength(Bouquet bouquet) throws BouquetException, FlowerException {
+    public OptionalInt bouquetLength(Bouquet bouquet) throws BouquetException, FlowerException {
         int maxLength = 0;
         if (bouquet == null) {
             throw new BouquetException("Bouquet is empty");
@@ -53,7 +53,7 @@ public class BouquetCalculationServiceImpl implements BouquetCalculationService 
     }
 
     @Override
-    public OptionalInt BouquetWeight(Bouquet bouquet) throws BouquetException, FlowerException {
+    public OptionalInt bouquetWeight(Bouquet bouquet) throws BouquetException, FlowerException {
         int bouquetWeight = 0;
         if (bouquet == null) {
             throw new BouquetException("Bouquet is empty");
