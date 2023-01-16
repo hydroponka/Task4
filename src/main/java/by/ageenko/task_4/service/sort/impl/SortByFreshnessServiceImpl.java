@@ -2,7 +2,6 @@ package by.ageenko.task_4.service.sort.impl;
 
 import by.ageenko.task_4.entity.Bouquet;
 import by.ageenko.task_4.entity.CutFlower;
-import by.ageenko.task_4.entity.Flower;
 import by.ageenko.task_4.exception.BouquetException;
 import by.ageenko.task_4.exception.FlowerException;
 import by.ageenko.task_4.service.sort.SortByFreshnessService;
@@ -18,12 +17,14 @@ public class SortByFreshnessServiceImpl implements SortByFreshnessService {
 
     @Override
     public void sortByFreshness(Bouquet bouquet) throws BouquetException, FlowerException {
-        List<CutFlower> cutFlowers = bouquet.getCutFlowers();
         if (bouquet == null) {
             throw new BouquetException("Bouquet is empty");
-        } else if (cutFlowers == null) {
+        }
+        List<CutFlower> cutFlowers = bouquet.getCutFlowers();
+        if (cutFlowers == null) {
             throw new FlowerException("Flower list is empty");
-        } else if (cutFlowers.size() != 0) {
+        }
+        if (!cutFlowers.isEmpty()) {
             List<CutFlower> flowerListUnfresh = new ArrayList<>();
             List<CutFlower> flowerListFresh = new ArrayList<>();
             for (int i = 0; i < cutFlowers.size(); i++) {
@@ -43,7 +44,7 @@ public class SortByFreshnessServiceImpl implements SortByFreshnessService {
             bouquet.setCutFlowers(cutFlowers);
             bouquet.setFlowerList(cutFlowers, bouquet.getPottedFlowers());
         } else {
-            logger.log(Level.INFO, "Flower list length = 0", bouquet.getFlowerList());
+            logger.log(Level.INFO, "Flower list length = {}", bouquet.getFlowerList().size());
         }
     }
 }
