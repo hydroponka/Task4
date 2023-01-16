@@ -20,18 +20,18 @@ public class SearchServiceImpl implements SearchService {
         List<Flower> flowerList = new ArrayList<>();
         if (bouquet == null) {
             throw new BouquetException("Bouquet is empty");
-        } else if (bouquet.getFlowers() == null) {
+        } else if (bouquet.getFlowerList() == null) {
             throw new FlowerException("Flower list is empty");
-        } else if (bouquet.getFlowers().size() != 0) {
-            for (int i = 0; i < bouquet.getFlowers().size(); i++) {
-                if (bouquet.getFlowers().get(i).getFlowerLength() > leftEnd && bouquet.getFlowers().get(i).getFlowerLength() < rightEnd) {
-                    flowerList.add(bouquet.getFlowers().get(i));
+        } else if (bouquet.getFlowerList().size()!= 0) {
+            for (int i = 0; i < bouquet.getFlowerList().size(); i++) {
+                if (bouquet.getFlowerList().get(i).getLength() > leftEnd && bouquet.getFlowerList().get(i).getLength() < rightEnd) {
+                    flowerList.add(bouquet.getFlowerList().get(i));
                 } else {
                     logger.log(Level.INFO, "Flowers in the given range were not found");
                 }
             }
         } else {
-            logger.log(Level.INFO, "Flower list length = 0", bouquet.getFlowers());
+            logger.log(Level.INFO, "Flower list length = 0", bouquet.getFlowerList());
         }
         return flowerList;
     }
@@ -41,18 +41,20 @@ public class SearchServiceImpl implements SearchService {
         List<Flower> flowerList = new ArrayList<>();
         if (bouquet == null) {
             throw new BouquetException("Bouquet is empty");
-        } else if (bouquet.getFlowers() == null) {
+        }
+        if (bouquet.getFlowerList() == null) {
             throw new FlowerException("Flower list is empty");
-        } else if (bouquet.getFlowers().size() != 0) {
-            for (int i = 0; i < bouquet.getFlowers().size(); i++) {
-                if (bouquet.getFlowers().get(i).getFlowerPrice() > leftEnd && bouquet.getFlowers().get(i).getFlowerPrice() < rightEnd) {
-                    flowerList.add(bouquet.getFlowers().get(i));
+        }
+        if (bouquet.getFlowerList().size() != 0) {
+            for (int i = 0; i < bouquet.getFlowerList().size(); i++) {
+                if (bouquet.getFlowerList().get(i).getPrice() > leftEnd && bouquet.getFlowerList().get(i).getPrice() < rightEnd) {
+                    flowerList.add(bouquet.getFlowerList().get(i));
                 } else {
                     logger.log(Level.INFO, "Flowers in the given range were not found");
                 }
             }
         } else {
-            logger.log(Level.INFO, "Flower list length = 0", bouquet.getFlowers());
+            logger.log(Level.INFO, "Flower list length = 0", bouquet.getFlowerList());
         }
         return flowerList;
     }

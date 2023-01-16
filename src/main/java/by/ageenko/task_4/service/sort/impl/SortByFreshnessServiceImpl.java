@@ -1,6 +1,7 @@
 package by.ageenko.task_4.service.sort.impl;
 
 import by.ageenko.task_4.entity.Bouquet;
+import by.ageenko.task_4.entity.CutFlower;
 import by.ageenko.task_4.entity.Flower;
 import by.ageenko.task_4.exception.BouquetException;
 import by.ageenko.task_4.exception.FlowerException;
@@ -17,31 +18,32 @@ public class SortByFreshnessServiceImpl implements SortByFreshnessService {
 
     @Override
     public void sortByFreshness(Bouquet bouquet) throws BouquetException, FlowerException {
-        List<Flower> flowerList = bouquet.getFlowers();
+        List<CutFlower> cutFlowers = bouquet.getCutFlowers();
         if (bouquet == null) {
             throw new BouquetException("Bouquet is empty");
-        } else if (flowerList == null) {
+        } else if (cutFlowers == null) {
             throw new FlowerException("Flower list is empty");
-        } else if (flowerList.size() != 0) {
-            List<Flower> flowerListUnfresh = new ArrayList<>();
-            List<Flower> flowerListFresh = new ArrayList<>();
-            for (int i = 0; i < flowerList.size(); i++) {
-                if (flowerList.get(i).getFreshness().toUpperCase().equals(Freshness.UNFRESH.toString())) {
-                    flowerListUnfresh.add(flowerList.get(i));
-                } else if (flowerList.get(i).getFreshness().toUpperCase().equals(Freshness.FRESH.toString())) {
-                    flowerListFresh.add(flowerList.get(i));
+        } else if (cutFlowers.size() != 0) {
+            List<CutFlower> flowerListUnfresh = new ArrayList<>();
+            List<CutFlower> flowerListFresh = new ArrayList<>();
+            for (int i = 0; i < cutFlowers.size(); i++) {
+                if (!cutFlowers.get(i).isFreshness()) {
+                    flowerListUnfresh.add(cutFlowers.get(i));
+                } else if (cutFlowers.get(i).isFreshness()) {
+                    flowerListFresh.add(cutFlowers.get(i));
                 }
             }
-            flowerList = new ArrayList<>();
+            cutFlowers = new ArrayList<>();
             for (int i = 0; i < flowerListFresh.size(); i++) {
-                flowerList.add(flowerListFresh.get(i));
+                cutFlowers.add(flowerListFresh.get(i));
             }
             for (int i = 0; i < flowerListUnfresh.size(); i++) {
-                flowerList.add(flowerListUnfresh.get(i));
+                cutFlowers.add(flowerListUnfresh.get(i));
             }
-            bouquet.setFlowers(flowerList);
+            bouquet.setCutFlowers(cutFlowers);
+            bouquet.setFlowerList(cutFlowers, bouquet.getPottedFlowers());
         } else {
-            logger.log(Level.INFO, "Flower list length = 0", bouquet.getFlowers());
+            logger.log(Level.INFO, "Flower list length = 0", bouquet.getFlowerList());
         }
     }
 }

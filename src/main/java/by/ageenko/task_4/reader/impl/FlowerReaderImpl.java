@@ -79,21 +79,15 @@ public class FlowerReaderImpl implements FlowerReader {
                 String[] strSplit = strTemp.split(SPACE_SEPARATOR);
                 array = new int[strSplit.length];
                 strArray = new String[strSplit.length];
-                for (int i = 0; i < strSplit.length - 3; i++) {
+                for (int i = 0; i < strSplit.length; i++) {
                     try {
                         strArray[i] = strSplit[i];
-                    } catch (NullPointerException e) {
-                        logger.log(Level.ERROR, "String format is incorrect = {}", strSplit[i]);
-                    }
-                }
-                for (int i = strSplit.length - 3; i < strSplit.length; i++) {
-                    try {
                         array[i] = Integer.parseInt(strSplit[i]);
                     } catch (NumberFormatException e) {
                         logger.log(Level.ERROR, "Number format is incorrect = {}", strSplit[i]);
                     }
                 }
-                pottedFlower = new PottedFlower(strArray[0], array[1], array[2], array[3], PotSize.valueOf(strArray[4]));
+                pottedFlower = new PottedFlower(strArray[0], array[1], array[2], array[3], PotSize.valueOf(strArray[4].toUpperCase()));
             } else {
                 logger.log(Level.WARN, "File is empty = {}", filename);
                 pottedFlower = null;

@@ -8,6 +8,13 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws FlowerException {
+        FlowerReaderImpl flowerReader = new FlowerReaderImpl();
+        PottedFlower rose = flowerReader.pottedFlowerReader("data//Rose");
+        CutFlower gerbera = flowerReader.cutFlowerReader("data//Gerbera");
+        List<PottedFlower> pottedFlowers = List.of(rose);
+        List<CutFlower> cutFlowers = List.of(gerbera);
+        Bouquet bouquet = new Bouquet(cutFlowers, pottedFlowers, PackageType.BASKET);
+        System.out.println(bouquet.getFlowerList());
 
     }
 }

@@ -1,19 +1,25 @@
 package by.ageenko.task_4.entity;
 
+import java.util.StringJoiner;
+
 public class CutFlower extends Flower{
-    private boolean frehness;
-    private int flowerLength;
-    public CutFlower(String flowerName, boolean freshness, int flowerWeight, int flowerLength, int flowerPrice) {
-        super(flowerName, flowerWeight, flowerPrice);
-        this.frehness = freshness;
-        this.flowerLength = flowerLength;
+    private boolean freshness;
+
+    public CutFlower(String name, boolean freshness, int weight, int length, int price) {
+        super(name, weight, length, price);
+        this.freshness = freshness;
     }
 
-    public boolean isFrehness() {
-        return frehness;
+
+    public boolean isFreshness() {
+        return freshness;
     }
 
-    public int getFlowerLength() {
-        return flowerLength;
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", CutFlower.class.getSimpleName() + "[", "]")
+                .add(super.toString())
+                .add("freshness=" + freshness)
+                .toString();
     }
 }

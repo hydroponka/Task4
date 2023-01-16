@@ -17,14 +17,15 @@ class SortByFreshnessServiceImplTest {
     @Test
     void sortByFreshness() throws FlowerException, BouquetException {
         FlowerReaderImpl flowerReader = new FlowerReaderImpl();
-        Flower rose = flowerReader.pottedFlowerReader("data//Rose");
-        Flower gerbera = flowerReader.cutFlowerReader("data//Gerbera");
-        List<Flower> flowerList = List.of(rose,gerbera);
-        Bouquet bouquet = new Bouquet(flowerList, PackageType.BASKET);
-        logger.log(Level.INFO, "list = {}", bouquet.getFlowers());
+        PottedFlower rose = flowerReader.pottedFlowerReader("data//Rose");
+        CutFlower orchid = flowerReader.cutFlowerReader("data//Orchid");
+        CutFlower gerbera = flowerReader.cutFlowerReader("data//Gerbera");
+        List<PottedFlower>pottedFlowers = List.of(rose);
+        List<CutFlower> cutFlower= List.of(orchid,gerbera);
+        Bouquet bouquet = new Bouquet(cutFlower,pottedFlowers, PackageType.BASKET);
+        logger.log(Level.INFO, "list = {}", bouquet.getFlowerList());
         SortByFreshnessServiceImpl sortByFreshnessService = new SortByFreshnessServiceImpl();
         sortByFreshnessService.sortByFreshness(bouquet);
-        logger.log(Level.INFO, "listSort = {}", bouquet.getFlowers());
-
+        logger.log(Level.INFO, "listSort = {}", bouquet.getFlowerList());
     }
 }
