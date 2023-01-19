@@ -20,9 +20,8 @@ class SortByFreshnessServiceImplTest {
         PottedFlower rose = flowerReader.pottedFlowerReader("data//Rose");
         CutFlower orchid = flowerReader.cutFlowerReader("data//Orchid");
         CutFlower gerbera = flowerReader.cutFlowerReader("data//Gerbera");
-        List<PottedFlower>pottedFlowers = List.of(rose);
-        List<CutFlower> cutFlower= List.of(orchid,gerbera);
-        Bouquet bouquet = new Bouquet(cutFlower,pottedFlowers, PackageType.BASKET);
+        List<Flower> flowers = List.of(rose,orchid,gerbera);
+        Bouquet bouquet = new Bouquet(flowers, PackageType.BASKET);
         logger.log(Level.INFO, "list = {}", bouquet.getFlowerList());
         SortByFreshnessServiceImpl sortByFreshnessService = new SortByFreshnessServiceImpl();
         sortByFreshnessService.sortByFreshness(bouquet);

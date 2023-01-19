@@ -2,6 +2,7 @@ package by.ageenko.task_4.entity;
 
 import by.ageenko.task_4.generator.FlowerIdGenerator;
 
+import java.util.Objects;
 import java.util.StringJoiner;
 
 public abstract class Flower {

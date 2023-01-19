@@ -8,50 +8,25 @@ import java.util.StringJoiner;
 
 public class Bouquet {
     private int bouquetId;
-    private List<CutFlower> cutFlowers;
-    private List<PottedFlower> pottedFlowers;
-    private List<Flower> flowerList = new ArrayList<>();
+    private List<Flower> flowerList;
     private PackageType packageType;
 
-
-    public Bouquet(List<CutFlower> cutFlowers, List<PottedFlower> pottedFlowers, PackageType packageType) {
-        this.bouquetId = BouquetIdGenerator.generateIdOfBouquet();
-        this.cutFlowers = cutFlowers;
-        this.pottedFlowers = pottedFlowers;
-        this.flowerList.addAll(cutFlowers);
-        this.flowerList.addAll(pottedFlowers);
+    public Bouquet(List<Flower> flowerList, PackageType packageType) {
+        this.flowerList = flowerList;
         this.packageType = packageType;
+        this.bouquetId = BouquetIdGenerator.generateIdOfBouquet();
     }
 
     public int getBouquetId() {
         return bouquetId;
     }
 
-    public List<CutFlower> getCutFlowers() {
-        return cutFlowers;
-    }
-
-    public void setCutFlowers(List<CutFlower> cutFlowers) {
-        this.cutFlowers = cutFlowers;
-    }
-
-    public List<PottedFlower> getPottedFlowers() {
-        return pottedFlowers;
-    }
-
-    public void setPottedFlowers(List<PottedFlower> pottedFlowers) {
-        this.pottedFlowers = pottedFlowers;
-    }
-
     public List<Flower> getFlowerList() {
         return flowerList;
     }
 
-    public void setFlowerList(List<CutFlower> cutFlowerList, List<PottedFlower> pottedFlowerList) {
-        this.flowerList = new ArrayList<>();
-        this.flowerList.addAll(cutFlowerList);
-        this.flowerList.addAll(pottedFlowerList);
-
+    public void setFlowerList(List<Flower> flowerList) {
+        this.flowerList = flowerList;
     }
 
     public PackageType getPackageType() {
@@ -66,8 +41,6 @@ public class Bouquet {
     public String toString() {
         return new StringJoiner(", ", Bouquet.class.getSimpleName() + "[", "]")
                 .add("bouquetId=" + bouquetId)
-                .add("cutFlowers=" + cutFlowers)
-                .add("pottedFlowers=" + pottedFlowers)
                 .add("flowerList=" + flowerList)
                 .add("packageType=" + packageType)
                 .toString();

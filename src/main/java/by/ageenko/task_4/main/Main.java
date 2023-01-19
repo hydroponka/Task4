@@ -7,7 +7,7 @@ import by.ageenko.task_4.reader.impl.FlowerReaderImpl;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) throws FlowerException {
+    /*public static void main(String[] args) throws FlowerException {
         FlowerReaderImpl flowerReader = new FlowerReaderImpl();
         PottedFlower rose = flowerReader.pottedFlowerReader("data//Rose");
         CutFlower gerbera = flowerReader.cutFlowerReader("data//Gerbera");
@@ -16,5 +16,5 @@ public class Main {
         Bouquet bouquet = new Bouquet(cutFlowers, pottedFlowers, PackageType.BASKET);
         System.out.println(bouquet.getFlowerList());
 
-    }
+    }*/
 }
