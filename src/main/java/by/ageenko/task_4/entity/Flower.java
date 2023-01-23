@@ -60,7 +60,8 @@ public abstract class Flower {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Flower flower)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
+        Flower flower = (Flower) o;
         return flowerId == flower.flowerId && weight == flower.weight && length == flower.length && price == flower.price && Objects.equals(name, flower.name);
     }
 
