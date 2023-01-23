@@ -19,15 +19,17 @@ public class CutFlower extends Flower{
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof CutFlower cutFlower)) return false;
         if (!super.equals(o)) return false;
-        CutFlower cutFlower = (CutFlower) o;
+
         return freshness == cutFlower.freshness;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), freshness);
+        int result = super.hashCode();
+        result = 31 * result + (freshness ? 1 : 0);
+        return result;
     }
 
     @Override

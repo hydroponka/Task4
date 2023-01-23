@@ -60,14 +60,23 @@ public abstract class Flower {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Flower flower = (Flower) o;
-        return flowerId == flower.flowerId && weight == flower.weight && length == flower.length && price == flower.price && Objects.equals(name, flower.name);
+        if (!(o instanceof Flower flower)) return false;
+
+        if (flowerId != flower.flowerId) return false;
+        if (weight != flower.weight) return false;
+        if (length != flower.length) return false;
+        if (price != flower.price) return false;
+        return Objects.equals(name, flower.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(flowerId, name, weight, length, price);
+        int result = flowerId;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + weight;
+        result = 31 * result + length;
+        result = 31 * result + price;
+        return result;
     }
 
     @Override
