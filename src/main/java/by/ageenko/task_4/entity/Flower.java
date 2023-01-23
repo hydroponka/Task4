@@ -58,8 +58,20 @@ public abstract class Flower {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Flower flower)) return false;
+        return flowerId == flower.flowerId && weight == flower.weight && length == flower.length && price == flower.price && Objects.equals(name, flower.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(flowerId, name, weight, length, price);
+    }
+
+    @Override
     public String toString() {
-        return new StringJoiner(", ", Flower.class.getSimpleName() + "[", "]")
+        return new StringJoiner(", ",  "[", "]")
                 .add("flowerId=" + flowerId)
                 .add("flowerName='" + name + "'")
                 .add("flowerWeight=" + weight)

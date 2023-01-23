@@ -1,5 +1,6 @@
 package by.ageenko.task_4.entity;
 
+import java.util.Objects;
 import java.util.StringJoiner;
 
 public class CutFlower extends Flower{
@@ -16,9 +17,21 @@ public class CutFlower extends Flower{
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CutFlower cutFlower)) return false;
+        if (!super.equals(o)) return false;
+        return freshness == cutFlower.freshness;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), freshness);
+    }
+
+    @Override
     public String toString() {
-        return new StringJoiner(", ", CutFlower.class.getSimpleName() + "[", "]")
-                .add(super.toString())
+        return new StringJoiner(", ", CutFlower.class.getSimpleName() + super.toString() + "[", "]")
                 .add("freshness=" + freshness)
                 .toString();
     }

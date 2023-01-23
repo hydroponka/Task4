@@ -22,16 +22,17 @@ public class SortByFreshnessServiceImpl implements SortByFreshnessService {
         if (bouquet == null) {
             throw new BouquetException("Bouquet is empty");
         }
-        List<CutFlower> cutFlowers = null;
-        List<PottedFlower> pottedFlowers = null;
-        for (int i = 0; i < bouquet.getFlowerList().size(); i++){
-            if(bouquet.getFlowerList().get(i) instanceof CutFlower){
+        List<CutFlower> cutFlowers = new ArrayList<>();
+        List<PottedFlower> pottedFlowers = new ArrayList<>();
+        for (int i = 0; i < bouquet.getFlowerList().size(); i++) {
+            if (bouquet.getFlowerList().get(i) instanceof CutFlower) {
                 cutFlowers.add((CutFlower) bouquet.getFlowerList().get(i));
-            }else {
+            }
+            if (bouquet.getFlowerList().get(i) instanceof PottedFlower) {
                 pottedFlowers.add((PottedFlower) bouquet.getFlowerList().get(i));
             }
         }
-        if (cutFlowers == null) {
+        if (cutFlowers.isEmpty()) {
             throw new FlowerException("Flower list is empty");
         }
         if (!cutFlowers.isEmpty()) {
